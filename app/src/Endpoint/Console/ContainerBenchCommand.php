@@ -20,7 +20,7 @@ use Spiral\Console\Attribute\Option;
 use Spiral\Console\Command;
 
 #[AsCommand(
-    name: 'bench:container',
+    name: 'bench:containers',
     description: 'Bench containers performance',
 )]
 final class ContainerBenchCommand extends Command
