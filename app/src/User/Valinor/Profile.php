@@ -4,13 +4,14 @@ namespace App\User\Valinor;
 
 class Profile
 {
-    protected string $firstName = '';
-    protected string $lastName = '';
-    protected string $phone = '';
-    protected Address $address;
-    /**
-     * @var SocialAccount[]
-     */
-    protected array $accounts;
+    public function __construct(
+        public string $firstName = '',
+        public string $lastName = '',
+        public string $phone = '',
+        public Address $address,
+        /** @var SocialAccount[] */
+        public array $accounts,
+    ) {
+    }
 }
 

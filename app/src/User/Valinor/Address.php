@@ -4,9 +4,12 @@ namespace App\User\Valinor;
 
 class Address
 {
-    protected string $street;
-    protected string $city;
-    protected string $state;
-    protected string $zip;
+    public function __construct(
+        public string $street,
+        public string $city,
+        public string $state,
+        public string $zip,
+    ) {
+    }
 }
 

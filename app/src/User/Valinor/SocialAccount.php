@@ -1,9 +1,13 @@
 <?php
+
 namespace App\User\Valinor;
 
 class SocialAccount
 {
-    protected string $name;
-    protected string $url;
+    public function __construct(
+        public string $name,
+        public string $url,
+    ) {
+    }
 }
 

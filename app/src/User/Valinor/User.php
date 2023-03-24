@@ -5,14 +5,14 @@ namespace App\User\Valinor;
 class User
 {
     public function __construct(
-        protected int $id,
-        protected string $username,
-        protected string $email,
+        public int $id,
+        public string $username,
+        public string $email,
         /**
          * @var Role[]
          */
-        protected array $roles,
-        protected Profile $profile,
+        public array $roles,
+        public Profile $profile,
     ) {
     }
 }

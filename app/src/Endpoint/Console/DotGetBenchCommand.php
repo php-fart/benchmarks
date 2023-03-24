@@ -5,17 +5,23 @@ declare(strict_types=1);
 namespace App\Endpoint\Console;
 
 use Illuminate\Support\Arr;
+use Spiral\Console\Attribute\AsCommand;
+use Spiral\Console\Attribute\Option;
 use Spiral\Console\Command;
 use DragonCode\Benchmark\Benchmark;
 use Spiral\Http\Request\InputBag;
 use Yiisoft\Arrays\ArrayHelper;
 
+#[AsCommand(
+    name: 'bench:dot-get',
+    description: 'Bench dot get functions performance',
+)]
 class DotGetBenchCommand extends Command
 {
-    protected const NAME = 'bench';
-    protected const DESCRIPTION = '';
-
     private const ARR_PATH = 'foo.quux.corge.grault.garply.xyzzy.quux.corge.grault.garply.xyzzy.quux.corge.grault.garply.xyzzy.quux.corge.grault.garply.xyzzy.thud';
+
+    #[Option(shortcut: 'i', description: 'Iterations count')]
+    private int $iterations = 1_000;
 
     protected function perform(): void
     {
@@ -24,7 +30,7 @@ class DotGetBenchCommand extends Command
         $bag = new InputBag($array);
 
         (new Benchmark())
-            ->iterations(100000)
+            ->iterations($this->iterations)
             ->withoutData()
             ->compare([
                 'Spiral' => fn () => $bag->get(self::ARR_PATH),
