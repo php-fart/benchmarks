@@ -45,6 +45,9 @@ final class SerializersBenchCommand extends Command
         $serializers->addSerializer(new SerializableClosure(), $userArray);
         $serializers->addSerializer(new SerializableClosure(), $userDTO);
 
+        $serializers->addSerializer(new SerializableClosure(true), $userArray, 'array w/secret');
+        $serializers->addSerializer(new SerializableClosure(true), $userDTO, 'object w/secret');
+
         $encodeTests = [];
         $decodeTests = [];
 
